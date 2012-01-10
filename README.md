@@ -18,7 +18,13 @@ To use Textile Editor Helper
 
 Directions to get the helper up and running for your install:
 
-First, you'll need to run `rails g textile_editor_helper:install`
+First, you'll need to add the gem.
+
+`gem 'textile_editor_helper'`
+
+and do
+
+`rails g textile_editor_helper:install`
 
 To use the Textile-Editor-Helper with a specific text area, you can choose between the following options:
 
