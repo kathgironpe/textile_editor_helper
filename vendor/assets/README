@@ -4,3 +4,63 @@ Textile Editor Helper
 
 The assets have been copied. 
 
+
+*********************
+Example App
+*********************
+
+rails g something -d mysql
+rake db:create RAILS_ENV=development
+rails g scaffold Post body:text 
+rake db:migrate 
+
+*********************
+Example layout
+*********************
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Peace</title>
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  
+  <%= csrf_meta_tags %>
+  <%= yield :head %>
+</head>
+<body>
+
+<%= yield %>
+<%= javascript_include_tag "application" %>
+<%= yield :javascript %>
+</body>
+</html>
+
+
+*********************
+Example form
+*********************
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.textile_editor :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+    <% content_for :javascript do %>
+    <%= textile_editor_initialize(:framework => :jquery) %>
+    <% end %>
+  </div>
+<% end %>

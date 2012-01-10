@@ -95,7 +95,7 @@ module ActionView
       # adds the necessary javascript include tags, stylesheet tags,
       # and load event with necessary javascript to active textile editor(s)
       # sample output:
-      #    <link href="/stylesheets/textile-editor.css" media="screen" rel="Stylesheet" type="text/css" />
+      #    <link href="/stylesheets/textile-editor.css" media="screen" rel="stylesheet" type="text/css" />
       #    <script src="/javascripts/textile-editor.js" type="text/javascript"></script>
       #    <script type="text/javascript">
       #    document.observe('dom:loaded', function() {
