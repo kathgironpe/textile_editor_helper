@@ -10,7 +10,7 @@ Dependency
 
 To use Textile Editor Helper you must be using either the Prototype or jQuery JavaScript libraries. If using Prototype, the Textile Editor Helper starts up on the 'dom:loaded' custom event. If using jQuery, it uses the $(document).ready() method.
 
-Rails 3.2 removed vendor/plugins that is why this gem exists.
+For Rails 3.2, vendor/plugins was removed that is why this gem exists.
 
 
 To use Textile Editor Helper
@@ -65,6 +65,13 @@ To Modify Textile Editor Helper
 
 Most of the options that you might want to modify (e.g. access keystroke or whether a tag is available in simple) are found in textile_editor_config.js. Pretty straightforward.
 
+TESTING
+--------------------
+ARUBA_REPORT_DIR=doc cucumber features/copy_assets.feature
+
+TO DO
+--------------------
+Improve editor and add preview
 
 More Info on Textile
 --------------------

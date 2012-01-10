@@ -19,4 +19,6 @@ Gem::Specification.new do |gem|
   gem.add_development_dependency 'rails', '>= 3.1.3'
   gem.add_dependency "thor"
   gem.add_dependency "test-unit"
+  gem.add_development_dependency "cucumber"
+  gem.add_development_dependency "aruba"
 end
