@@ -1,6 +1,6 @@
 module TextileEditorHelper
   module Generators
-    class CopyAssetsGenerator < Rails::Generators::Base
+    class InstallGenerator < Rails::Generators::Base
       source_root File.expand_path('../../../../vendor/assets', __FILE__)
 
       private

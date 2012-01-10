@@ -10,13 +10,15 @@ Dependency
 
 To use Textile Editor Helper you must be using either the Prototype or jQuery JavaScript libraries. If using Prototype, the Textile Editor Helper starts up on the 'dom:loaded' custom event. If using jQuery, it uses the $(document).ready() method.
 
+Rails 3.2 removed vendor/plugins that is why this gem exists.
+
 
 To use Textile Editor Helper
 ----------------------------
 
 Directions to get the helper up and running for your install:
 
-First, you'll need to run `rake textile_editor_helper:install`
+First, you'll need to run `rails g textile_editor_helper:install`
 
 To use the Textile-Editor-Helper with a specific text area, you can choose between the following options:
 
