@@ -1,6 +1,6 @@
 module TextileEditorHelper
   module Generators
-    class CopyAssetGenerator < Rails::Generators::Base
+    class CopyAssetsGenerator < Rails::Generators::Base
       source_root File.expand_path('../../../../vendor/assets', __FILE__)
 
       private
@@ -35,6 +35,8 @@ module TextileEditorHelper
         copy_file 'stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
         
         directory 'images/textile-editor', "public/images/textile-editor"
+        
+        readme 'README' if behavior == :invoke
         
       end
     end
