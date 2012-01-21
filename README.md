@@ -12,6 +12,12 @@ To use Textile Editor Helper you must be using either the Prototype or jQuery Ja
 
 For Rails 3.2, vendor/plugins was removed that is why this gem exists.
 
+Travis CI Build Status
+-----------------------
+
+[![Build Status](https://secure.travis-ci.org/bridgeutopia/textile_editor_helper.png)](http://travis-ci.org/bridgeutopia/textile_editor_helper)
+
+
 
 To use Textile Editor Helper
 ----------------------------
