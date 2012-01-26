@@ -18,7 +18,6 @@ Travis CI Build Status
 [![Build Status](https://secure.travis-ci.org/bridgeutopia/textile_editor_helper.png)](http://travis-ci.org/bridgeutopia/textile_editor_helper)
 
 
-
 To use Textile Editor Helper
 ----------------------------
 
@@ -71,7 +70,7 @@ To Modify Textile Editor Helper
 
 Most of the options that you might want to modify (e.g. access keystroke or whether a tag is available in simple) are found in textile_editor_config.js. Pretty straightforward.
 
-TESTING
+TESTING (Cucumber is required)
 --------------------
 bundle exec rake
 
