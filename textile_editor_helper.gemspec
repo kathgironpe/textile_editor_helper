@@ -20,6 +20,5 @@ Gem::Specification.new do |gem|
   gem.add_dependency "thor"
   gem.add_dependency "test-unit"
   gem.add_development_dependency "cucumber"
-  gem.add_development_dependency "aruba"
   gem.add_development_dependency "rspec", ">= 2.0.0"
 end

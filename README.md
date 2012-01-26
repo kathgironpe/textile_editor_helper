@@ -73,7 +73,7 @@ Most of the options that you might want to modify (e.g. access keystroke or whet
 
 TESTING
 --------------------
-ARUBA_REPORT_DIR=doc cucumber features/copy_assets.feature
+bundle exec rake
 
 TO DO
 --------------------
