@@ -8,7 +8,9 @@ This version of Textile Editor Helper is a fork of the code found at http://svn.
 Dependency
 ----------
 
-To use Textile Editor Helper you must be using either the Prototype or jQuery JavaScript libraries. If using Prototype, the Textile Editor Helper starts up on the 'dom:loaded' custom event. If using jQuery, it uses the $(document).ready() method.
+To use Textile Editor Helper you must be using either the jQuery JavaScript library. 
+
+jQuery is required and make sure $(document).ready() method is called. Prototype is no longer supported. 
 
 For Rails 3.2, vendor/plugins was removed that is why this gem exists.
 
@@ -45,10 +47,6 @@ At the end of your form put in the following code:
 
     <%= textile_editor_initialize %> **Important!**
 
-If you're a jQuery guy, we've got what you need!
-
-    <%= textile_editor_initialize(:framework => :jquery) %>
-
 
 Then, just save your view and check it out
 
@@ -74,9 +72,24 @@ TESTING (Cucumber is required)
 --------------------
 bundle exec rake
 
-TO DO
+TEH Preview
 --------------------
-Improve editor and add preview
+Recently added a preview feature. To use: 
+
+    <%= textile_editor_initialize :preview=>true %> 
+
+Styling TEH Preview
+--------------------
+Add this to your CSS file and modify as needed: 
+
+.textile-preview {
+	width:83%;
+  padding:20px;
+  margin:10px 0px;
+  border:5px dotted #eee;
+  display:block;
+}
+
 
 More Info on Textile
 --------------------

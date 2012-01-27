@@ -4,7 +4,7 @@ require File.expand_path('../lib/textile_editor_helper/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["Katherine"]
   gem.email         = ["info@bridgeutopiaweb.com"]
-  gem.description   = %q{Textile Editor Helper is a gem for Ruby on Rails to add a Textile toolbar above textareas. Rails 3.2 no longer supports plugins.}
+  gem.description   = %q{Textile Editor Helper is a gem for Ruby on Rails 3.1 > to add a Textile toolbar above textareas.}
   gem.summary       = %q{Textile Editor Helper}
   gem.homepage      = "https://github.com/bridgeutopia/textile_editor_helper"
 

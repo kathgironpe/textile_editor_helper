@@ -10,4 +10,5 @@ Scenario: Assets are copied to rails asset directories
 	Then I should see file "app/assets/stylesheets/textile-editor.css"
 	And I should see file "app/assets/javascripts/textile-editor-config.js"
 	And I should see file "app/assets/javascripts/textile-editor.js"
+	And I should see file "app/assets/javascripts/jQtextile.js"
 	And I should see file "public/images/textile-editor/italic.png"

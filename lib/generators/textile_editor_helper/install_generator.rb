@@ -32,6 +32,7 @@ module TextileEditorHelper
 
         copy_file 'javascripts/textile-editor.js', "#{js_destination}/textile-editor.js"
         copy_file 'javascripts/textile-editor-config.js', "#{js_destination}/textile-editor-config.js"
+        copy_file 'javascripts/jQtextile.js', "#{js_destination}/jQtextile.js"
         copy_file 'stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
         
         directory 'images/textile-editor', "public/images/textile-editor"

@@ -13,11 +13,10 @@ module ActionView
         @template.textile_editor(@object_name, method, options.merge(:object => @object))
       end
     end
-    
-    module PrototypeHelper
-    end
+
     
     module FormHelper
+
       # Returns a textarea opening and closing tag set tailored for accessing a specified attribute (identified by +method+)
       # on an object assigned to the template (identified by +object+). Additional options on the input tag can be passed as a
       # hash with +options+ and places the textile toolbar above it
@@ -47,17 +46,22 @@ module ActionView
         mode      = options.delete(:simple) ? 'simple' : 'extended'
         (@textile_editor_ids ||= []) << [editor_id.to_s, mode.to_s]
 
-        InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
+				output = []
+				output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
+				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	
+				output.join("\n").html_safe
+				
       end
       
       def textile_editor_options(options={})
-        (@textile_editor_options ||= { :framework => :prototype }).merge! options
+        (@textile_editor_options ||= { :framework => :jquery, :preview=>false }).merge! options
       end
       
       def textile_editor_support
         output = []
         output << stylesheet_link_tag('textile-editor') 
         output << javascript_include_tag('textile-editor')
+				output << javascript_include_tag('jQtextile')
         output.join("\n").html_safe
       end
       
@@ -130,18 +134,14 @@ module ActionView
         output << '/* <![CDATA[ */'
         
         if !request.xhr?
-          case options[:framework]
-          when :prototype
-            output << %{document.observe('dom:loaded', function() \{}
-          when :jquery
-            output << %{jQuery(document).ready(function($) \{}
-          end
+           output << %{$(document).ready(function() \{}
         end      
 
-        # output << %q{TextileEditor.framework = '%s';} % options[:framework].to_s
         output << editor_buttons.join("\n") if editor_buttons.any?
         editor_ids.each do |editor_id, mode|
-          output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']
+          output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']					
+					output << %q{ $("#%s").keydown(function(event) {var textile_string = $("#%s").html(); if($("#%s_destination")[0]) { $("#%s_destination").JQtextile("textile", textile_string); } }); } % [editor_id, editor_id, editor_id, editor_id] if options[:preview]
+					
         end
         output << '});' unless request.xhr?
 

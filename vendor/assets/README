@@ -60,7 +60,7 @@ Example form
   <div class="actions">
     <%= f.submit %>
     <% content_for :javascript do %>
-    <%= textile_editor_initialize(:framework => :jquery) %>
+    <%= textile_editor_initialize %>
     <% end %>
   </div>
 <% end %>
