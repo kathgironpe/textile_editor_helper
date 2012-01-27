@@ -82,13 +82,13 @@ Styling TEH Preview
 --------------------
 Add this to your CSS file and modify as needed: 
 
-.textile-preview {
-	width:83%;
-  padding:20px;
-  margin:10px 0px;
-  border:5px dotted #eee;
-  display:block;
-}
+		.textile-preview {
+			width:83%;
+		  padding:20px;
+		  margin:10px 0px;
+		  border:5px dotted #eee;
+		  display:block;
+		}
 
 
 More Info on Textile
