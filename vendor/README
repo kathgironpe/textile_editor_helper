@@ -36,9 +36,9 @@ Example layout
 </html>
 
 
-*********************
-Example form
-*********************
+****************************
+Example form without preview
+****************************
 
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
@@ -61,6 +61,35 @@ Example form
     <%= f.submit %>
     <% content_for :javascript do %>
     <%= textile_editor_initialize %>
+    <% end %>
+  </div>
+<% end %>
+
+****************************
+Example form with preview
+****************************
+
+<%= form_for(@post) do |f| %>
+  <% if @post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+      <% @post.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.textile_editor :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+    <% content_for :javascript do %>
+    <%= textile_editor_initialize :preview=>true %>
     <% end %>
   </div>
 <% end %>
