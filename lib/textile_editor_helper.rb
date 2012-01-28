@@ -54,14 +54,13 @@ module ActionView
       end
       
       def textile_editor_options(options={})
-        (@textile_editor_options ||= { :framework => :jquery, :preview=>false }).merge! options
+        (@textile_editor_options ||= { :preview=>false }).merge! options
       end
       
       def textile_editor_support
         output = []
         output << stylesheet_link_tag('textile-editor') 
         output << javascript_include_tag('textile-editor')
-				output << javascript_include_tag('jQtextile')
         output.join("\n").html_safe
       end
       
@@ -139,8 +138,20 @@ module ActionView
 
         output << editor_buttons.join("\n") if editor_buttons.any?
         editor_ids.each do |editor_id, mode|
-          output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']					
-					output << %q{ $("#%s").keydown(function(event) {var textile_string = $("#%s").html(); if($("#%s_destination")[0]) { $("#%s_destination").JQtextile("textile", textile_string); } }); } % [editor_id, editor_id, editor_id, editor_id] if options[:preview]
+         
+        output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']					
+
+					
+					output << %q{ $("#%s").keyup(function() {
+						 var textile_string = $("#%s").val(); 
+						 if($("#%s_destination")[0]) { 
+
+						   $.post("/textile_preview", { text_data: textile_string, id: "%s"} );
+							} 
+						 });
+						
+						} % [editor_id, editor_id, editor_id, editor_id] if options[:preview]
+		
 					
         end
         output << '});' unless request.xhr?

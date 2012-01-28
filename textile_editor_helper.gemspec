@@ -16,9 +16,12 @@ Gem::Specification.new do |gem|
   gem.version       = TextileEditorHelper::VERSION
   
   #dependencies
-  gem.add_development_dependency 'rails', '>= 3.1.3'
+  gem.add_development_dependency 'rails', '>= 3.2.0'
+  gem.add_development_dependency "coffee-rails", '>=3.2.1'
   gem.add_dependency "thor"
   gem.add_dependency "test-unit"
-  gem.add_development_dependency "cucumber"
+  gem.add_development_dependency "RedCloth", ">=4.2.9"
+  gem.add_development_dependency "htmlentities", '>=4.3.1'
+  gem.add_development_dependency "cucumber", '>=1.1.4'
   gem.add_development_dependency "rspec", ">= 2.0.0"
 end

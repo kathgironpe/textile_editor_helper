@@ -1,7 +1,7 @@
 module TextileEditorHelper
   module Generators
     class InstallGenerator < Rails::Generators::Base
-      source_root File.expand_path('../../../../vendor/assets', __FILE__)
+      source_root File.expand_path('../../../../vendor', __FILE__)
 
       private
 
@@ -30,12 +30,20 @@ module TextileEditorHelper
           css_destination = 'public/stylesheets'
         end
 
-        copy_file 'javascripts/textile-editor.js', "#{js_destination}/textile-editor.js"
-        copy_file 'javascripts/textile-editor-config.js', "#{js_destination}/textile-editor-config.js"
-        copy_file 'javascripts/jQtextile.js', "#{js_destination}/jQtextile.js"
-        copy_file 'stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
+        copy_file 'assets/javascripts/textile-editor.js', "#{js_destination}/textile-editor.js"
+        copy_file 'assets/javascripts/textile-editor-config.js', "#{js_destination}/textile-editor-config.js"
+        copy_file 'assets/stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
+        copy_file 'app/controllers/textile_preview_controller.rb', "app/controllers/textile_preview_controller.rb"
+        copy_file 'app/helpers/textile_preview_helper.rb', "app/helpers/textile_preview_helper.rb"
         
-        directory 'images/textile-editor', "public/images/textile-editor"
+
+        lines = File.read("config/routes.rb").split("\n")
+        lines[3, 0] = "match 'textile_preview' => 'textile_preview#show'"
+        File.open("config/routes.rb", 'w') { |f| f.write(lines.join("\n")) }
+        
+        
+        directory 'app/views/textile_preview', 'app/views/textile_preview'
+        directory 'assets/images/textile-editor', 'public/images/textile-editor'
         
         readme 'README' if behavior == :invoke
         

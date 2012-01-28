@@ -63,9 +63,11 @@ TextileEditor.Methods = {
     var toolbar = document.createElement("div");
     toolbar.id = "textile-toolbar-" + canvas;
     toolbar.className = 'textile-toolbar';
+    
     this.canvas = document.getElementById(canvas);
-    this.canvas.parentNode.insertBefore(toolbar, this.canvas);
-    this.openTags = new Array();
+    this.canvas.parentNode.insertBefore(toolbar, this.canvas); 
+    this.openTags = new Array();      
+
 
     // Create the local Button array by assigning theButtons array to edButtons
     var edButtons = new Array();
