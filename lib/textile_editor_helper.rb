@@ -48,7 +48,7 @@ module ActionView
 
 				output = []
 				output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
-				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	
+				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	if options[:preview]
 				output.join("\n").html_safe
 				
       end

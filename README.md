@@ -80,7 +80,11 @@ TEH Preview
 --------------------
 Recently added a preview feature. To use: 
 
+		<%= f.textile_editor :body, :preview=>true %>
+		
     <%= textile_editor_initialize :preview=>true %> 
+
+This is shown in detail on the wiki page. Check it out. 
 
 Styling TEH Preview
 --------------------

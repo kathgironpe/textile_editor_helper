@@ -84,7 +84,7 @@ Example form with preview
 
   <div class="field">
     <%= f.label :body %><br />
-    <%= f.textile_editor :body %>
+    <%= f.textile_editor :body, :preview=>true %>
   </div>
   <div class="actions">
     <%= f.submit %>
