@@ -25,9 +25,13 @@ To use Textile Editor Helper
 
 Directions to get the helper up and running for your install:
 
-First, you'll need to add the gem.
+First, you'll need to add the gems required. RedCloth and htmlentities are for the preview feature. 
 
 `gem 'textile_editor_helper'`
+
+`gem 'RedCloth'`
+
+`gem 'htmlentities'`
 
 and do
 
