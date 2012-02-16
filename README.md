@@ -64,7 +64,11 @@ Currently the _simple_ tags are: _bold_, _underline_, _italic_, _strikethrough_.
 
 To create a text area that will only use the 'simple' tags create your text area with the following code:
 
-    <%= textile_editor 'object', 'field', :simple -%>
+    <%= textile_editor 'object', 'field', :simple=>true -%>
+
+or
+		
+	 <%= f.textile_editor :body, :simple=>true %>
 
 
 To Modify Textile Editor Helper

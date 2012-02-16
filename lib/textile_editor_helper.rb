@@ -44,17 +44,18 @@ module ActionView
       def textile_editor(object_name, method, options = {})        
         editor_id = options[:id] || '%s_%s' % [object_name, method]
         mode      = options.delete(:simple) ? 'simple' : 'extended'
+        preview   = options.delete(:preview) ? true : false
         (@textile_editor_ids ||= []) << [editor_id.to_s, mode.to_s]
 
 				output = []
 				output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
-				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	if options[:preview]
+				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	if preview
 				output.join("\n").html_safe
 				
       end
       
       def textile_editor_options(options={})
-        (@textile_editor_options ||= { :preview=>false }).merge! options
+        (@textile_editor_options ||= { }).merge! options
       end
       
       def textile_editor_support
@@ -123,6 +124,7 @@ module ActionView
           hash = dom_ids.last.dup
           options.merge! hash
           dom_ids.last.delete :framework
+          dom_ids.last.delete :preview
         end
 
         editor_ids = (@textile_editor_ids || []) + textile_extract_dom_ids(*dom_ids)
