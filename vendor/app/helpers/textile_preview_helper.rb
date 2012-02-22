@@ -7,7 +7,7 @@ module TextilePreviewHelper
     coder = HTMLEntities.new
     m = coder.decode(m)
     m = RedCloth.new(m).to_html 
-    m
+    view_context.raw m
 	end
   
 end

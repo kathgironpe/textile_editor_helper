@@ -88,6 +88,30 @@ Recently added a preview feature. To use:
 		
     <%= textile_editor_initialize :preview=>true %> 
 
+Update the helper. If you wish to move this helper to ApplicationHelper to make it work for all views, you have to remove view_context.
+
+	  def to_html(m)
+	    require 'redcloth'
+	    require 'htmlentities'
+
+	    coder = HTMLEntities.new
+	    m = coder.decode(m)
+	    m = RedCloth.new(m).to_html 
+	    view_context.raw m
+		end
+		
+Update code:
+
+		def to_html(m)
+		  require 'redcloth'
+		  require 'htmlentities'
+
+		  coder = HTMLEntities.new
+		  m = coder.decode(m)
+		  m = RedCloth.new(m).to_html 
+		  raw m
+		end
+		
 This is shown in detail on the wiki page. Check it out. 
 
 Styling TEH Preview
