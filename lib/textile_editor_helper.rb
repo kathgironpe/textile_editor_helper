@@ -1,5 +1,6 @@
 require "textile_editor_helper/version"
 
+
 module TextileEditorHelper
   # Your code goes here...
 end
@@ -14,7 +15,7 @@ module ActionView
       end
     end
 
-    
+
     module FormHelper
 
       # Returns a textarea opening and closing tag set tailored for accessing a specified attribute (identified by +method+)
@@ -41,7 +42,7 @@ module ActionView
       #   # => <textarea cols="20" rows="20" id="entry_body" name="entry[body]" disabled="disabled">
       #   #      #{@entry.body}
       #   #    </textarea>
-      def textile_editor(object_name, method, options = {})        
+      def textile_editor(object_name, method, options = {})
         editor_id = options[:id] || '%s_%s' % [object_name, method]
         mode      = options.delete(:simple) ? 'simple' : 'extended'
         preview   = options.delete(:preview) ? true : false
@@ -51,30 +52,30 @@ module ActionView
 				output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options)
 				output << %q{<div id="%s_destination" class="textile-preview"></div>} % [editor_id]	if preview
 				output.join("\n").html_safe
-				
+
       end
-      
+
       def textile_editor_options(options={})
         (@textile_editor_options ||= { }).merge! options
       end
-      
+
       def textile_editor_support
         output = []
-        output << stylesheet_link_tag('textile-editor') 
+        output << stylesheet_link_tag('textile-editor')
         output << javascript_include_tag('textile-editor')
         output.join("\n").html_safe
       end
-      
+
       # registers a new button for the Textile Editor toolbar
       # Parameters:
       #   * +text+: text to display (contents of button tag, so HTML is valid as well)
       #   * +options+: options Hash as supported by +content_tag+ helper in Rails
-      # 
+      #
       # Example:
       #   The following example adds a button labeled 'Greeting' which triggers an
       #   alert:
-      # 
-      #   <% textile_editor_button 'Greeting', :onclick => "alert('Hello!')" %> 
+      #
+      #   <% textile_editor_button 'Greeting', :onclick => "alert('Hello!')" %>
       #
       # *Note*: this method must be called before +textile_editor_initialize+
       def textile_editor_button(text, options={})
@@ -95,7 +96,7 @@ module ActionView
           ids + Array(fields).map { |field| "%s_%s" % [object, field] }
         end
       end
-      
+
       # adds the necessary javascript include tags, stylesheet tags,
       # and load event with necessary javascript to active textile editor(s)
       # sample output:
@@ -106,14 +107,14 @@ module ActionView
       #    TextileEditor.initialize('article_body', 'extended');
       #    TextileEditor.initialize('article_body_excerpt', 'simple');
       #    });
-      #    </script>  
-      # 
+      #    </script>
+      #
       # Note: in the case of this helper being called via AJAX, the output will be reduced:
       #    <script type="text/javascript">
       #    TextileEditor.initialize('article_body', 'extended');
       #    TextileEditor.initialize('article_body_excerpt', 'simple');
-      #    </script>  
-      # 
+      #    </script>
+      #
       # This means that the support files must be loaded outside of the AJAX request, either
       # via a call to this helper or the textile_editor_support() helper
       def textile_editor_initialize(*dom_ids)
@@ -133,28 +134,28 @@ module ActionView
         output << textile_editor_support unless request.xhr?
         output << '<script type="text/javascript">'
         output << '/* <![CDATA[ */'
-        
+
         if !request.xhr?
            output << %{$(document).ready(function() \{}
-        end      
+        end
 
         output << editor_buttons.join("\n") if editor_buttons.any?
         editor_ids.each do |editor_id, mode|
-         
-        output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']					
 
-					
+        output << %q{TextileEditor.initialize('%s', '%s');} % [editor_id, mode || 'extended']
+
+
 					output << %q{ $("#%s").keyup(function() {
-						 var textile_string = $("#%s").val(); 
-						 if($("#%s_destination")[0]) { 
+						 var textile_string = $("#%s").val();
+						 if($("#%s_destination")[0]) {
 
 						   $.post("/textile_preview", { text_data: textile_string, id: "%s"} );
-							} 
+							}
 						 });
-						
+
 						} % [editor_id, editor_id, editor_id, editor_id] if options[:preview]
-		
-					
+
+
         end
         output << '});' unless request.xhr?
 
@@ -163,11 +164,11 @@ module ActionView
         output.join("\n").html_safe
       end
     end
-    
+
     module FormTagHelper
-      # Creates a text input area; use a textarea for longer text inputs such as blog posts or descriptions 
+      # Creates a text input area; use a textarea for longer text inputs such as blog posts or descriptions
       # and includes the textile toolbar above it.
-      # 
+      #
       # ==== Options
       # * <tt>:size</tt> - A string specifying the dimensions (columns by rows) of the textarea (e.g., "25x10").
       # * <tt>:rows</tt> - Specify the number of rows in the textarea
@@ -197,10 +198,10 @@ module ActionView
         editor_id = options[:id] || name
         mode      = options.delete(:simple) ? 'simple' : 'extended'
         (@textile_editor_ids ||= []) << [editor_id.to_s, mode.to_s]
-        
+
         text_area_tag(name, content, options)
       end
     end
-    
+
   end
 end

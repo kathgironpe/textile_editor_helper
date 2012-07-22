@@ -14,12 +14,12 @@ Gem::Specification.new do |gem|
   gem.name          = "textile_editor_helper"
   gem.require_paths = ["lib"]
   gem.version       = TextileEditorHelper::VERSION
-  
+
   #dependencies
   gem.add_development_dependency 'rails', '>= 3.2.0'
   gem.add_development_dependency "coffee-rails", '>=3.2.1'
-  gem.add_dependency "thor"
-  gem.add_dependency "test-unit"
+  gem.add_development_dependency "thor"
+  gem.add_development_dependency "minitest"
   gem.add_development_dependency "RedCloth", ">=4.2.9"
   gem.add_development_dependency "htmlentities", '>=4.3.1'
   gem.add_development_dependency "cucumber", '>=1.1.4'
