@@ -33,20 +33,16 @@ module TextileEditorHelper
         copy_file 'assets/javascripts/textile-editor.js', "#{js_destination}/textile-editor.js"
         copy_file 'assets/javascripts/textile-editor-config.js', "#{js_destination}/textile-editor-config.js"
         copy_file 'assets/stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
-        copy_file 'app/controllers/textile_preview_controller.rb', "app/controllers/textile_preview_controller.rb"
-        copy_file 'app/helpers/textile_preview_helper.rb', "app/helpers/textile_preview_helper.rb"
-        
-
         lines = File.read("config/routes.rb").split("\n")
         lines[3, 0] = "match 'textile_preview' => 'textile_preview#show'"
         File.open("config/routes.rb", 'w') { |f| f.write(lines.join("\n")) }
-        
-        
+
+
         directory 'app/views/textile_preview', 'app/views/textile_preview'
         directory 'assets/images/textile-editor', 'public/images/textile-editor'
-        
+
         readme 'README' if behavior == :invoke
-        
+
       end
     end
   end

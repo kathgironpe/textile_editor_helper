@@ -20,7 +20,7 @@ Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
 
 Directions to get the helper up and running for your install:
 
-First, you'll need to add the gems required. RedCloth and htmlentities are for the preview feature.
+First, you'll need to add the gems required. RedCloth (or an alterntative) and htmlentities are also required.
 
 	 gem 'textile_editor_helper'
 
@@ -32,13 +32,17 @@ and do
 
 	rails g textile_editor_helper:install
 
-To use the Textile-Editor-Helper with a specific text area, you can choose between the following options:
+To use the Textile Editor Helper with a specific text area, you can choose between the following options:
 
     <%= f.textile_editor :description %>
 
     <%= textile_editor :user, "website" %>
 
     <%= textile_editor_tag 'description', :description %>
+
+### For simple_form users
+
+    <%= f.input :body, :as=>:textile_editor %>
 
 **Just like writing a text area tag!**
 
@@ -48,11 +52,6 @@ At the end of your form put in the following code:
 
 
 Then, just save your view and check it out
-
-
-## To Modify Textile Editor Helper
-
-Most of the options that you might want to modify (e.g. access keystroke or whether a tag is available in simple) are found in textile_editor_config.js. Pretty straightforward.
 
 
 ## Testing
@@ -94,4 +93,5 @@ The project is now maintained by <a href="http://blog.bridgeutopiaweb.com" targe
 
 <a href="http://www.hakjoon.com/code/38/textile-quicktags-redirect" target="_blank">Patrick Woods</a> &
 <a href="http://alexking.org/projects/js-quicktags" target="_blank">Alex King</a>
+
 
