@@ -1,6 +1,6 @@
 # Changelog
 
-## August 5, 2012
+## Version 0.0.17
 
 ### What was done?
 
