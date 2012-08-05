@@ -10,7 +10,7 @@ Gem::Specification.new do |gem|
 
   gem.executables   = Dir["bin/*"].map { |f| File.basename(f) }
   gem.files = `git ls-files`.strip.split("\n")
-  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split('\n')
+  gem.test_files    = `git ls-files -- {test,spec,features}/*`.split("\n")
   gem.name          = 'textile_editor_helper'
   gem.require_paths = ['lib']
   gem.version       = TextileEditorHelper::VERSION
