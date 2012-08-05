@@ -8,8 +8,8 @@ Gem::Specification.new do |gem|
   gem.summary       = %q{Textile Editor Helper}
   gem.homepage      = 'https://github.com/bridgeutopia/textile_editor_helper'
 
-  gem.executables   = `git ls-files -- bin/*`.split("\n").map{ |f| File.basename(f) }
-  gem.files         = `git ls-files`.split("\n")
+  gem.executables   = Dir["bin/*"].map { |f| File.basename(f) }
+  gem.files = `git ls-files`.strip.split("\n")
   gem.test_files    = `git ls-files -- {test,spec,features}/*`.split('\n')
   gem.name          = 'textile_editor_helper'
   gem.require_paths = ['lib']
