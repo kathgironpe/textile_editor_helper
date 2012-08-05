@@ -226,5 +226,4 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     assert_equal expected, actual
   end
 
-
 end

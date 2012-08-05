@@ -4,6 +4,7 @@ Textile Editor Helper is a plugin for Ruby on Rails to add a Textile toolbar abo
 
 This version of Textile Editor Helper is a fork of the code found at http://svn.webtest.wvu.edu/repos/rails/plugins/textile_editor_helper/ to allow for use with the form_for method.
 
+
 ## Simple vs. Extended
 
 
@@ -19,6 +20,7 @@ or
 
 	 <%= f.textile_editor :body, :simple=>true %>
 
+
 ##Dependencies
 
 
@@ -32,7 +34,6 @@ Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
 
 
 ## Rails Quickstart
-
 
 Directions to get the helper up and running for your install:
 
@@ -66,11 +67,10 @@ At the end of your form put in the following code:
 Then, just save your view and check it out
 
 
-
 ## To Modify Textile Editor Helper
 
-
 Most of the options that you might want to modify (e.g. access keystroke or whether a tag is available in simple) are found in textile_editor_config.js. Pretty straightforward.
+
 
 ## Testing
 
@@ -79,20 +79,17 @@ Most of the options that you might want to modify (e.g. access keystroke or whet
 	bundle install
 	bundle exec rake
 
-## Preview Feature
 
+## Preview Feature
 
 Textile Editor Preview feature is no longer supported. The wiki page will be updated to show two different ways of adding the preview feature to your app.
 
-
 ## More Info on Textile
-
 
 To learn more about Textile check out: <a href="http://www.textism.com/tools/textile/index.php" target="_blank">Textism</a> & <a href="http://hobix.com/textile/" target="_blank">Textile Reference</a>
 
 
 ## More Info on Slate
-
 
 slate is the CMS in development at West Virginia University that led to the development of Textile Editor Helper. Learn more at: http://slateinfo.blogs.wvu.edu
 
@@ -104,11 +101,9 @@ Textile Editor Helper is released under the MIT license.
 
 ## Acknowledgements
 
-
 Textile Editor Helper was created by Dave Olsen (Javascript) and Chris Scharf (Ruby/Rails) of <a href="http://webservices.wvu.edu/" target="_blank">West Virginia University Web Services</a>
 
 The project is now maintained by <a href="http://blog.bridgeutopiaweb.com" target="_blank">Katherine G. Pe</a>
-
 
 
 ## Inspired by
@@ -116,3 +111,4 @@ The project is now maintained by <a href="http://blog.bridgeutopiaweb.com" targe
 
 <a href="http://www.hakjoon.com/code/38/textile-quicktags-redirect" target="_blank">Patrick Woods</a> &
 <a href="http://alexking.org/projects/js-quicktags" target="_blank">Alex King</a>
+
