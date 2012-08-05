@@ -51,6 +51,10 @@ At the end of your form put in the following code:
 
 Then, just save your view and check it out.
 
+## Examples
+
+<a href="https://github.com/bridgeutopia/textile_editor_helper/wiki/Examples" target="_blank">Basic Examples</a>
+
 
 ## Testing
 
