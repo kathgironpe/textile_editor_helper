@@ -9,11 +9,9 @@ This version of Textile Editor Helper is a fork of the code found at http://svn.
 
 To use Textile Editor Helper you must be using either the jQuery JavaScript library.
 
-jQuery is required and make sure $(document).ready() method is called. Prototype is no longer supported.
+jQuery is required and make sure $(document).ready() method is called.
 
-For Rails 3.2, vendor/plugins was removed that is why this gem exists.
-
-Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
+For Rails 3.2, vendor/plugins was removed that is why this gem exists. Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
 
 
 ## Rails Quickstart
@@ -51,7 +49,7 @@ At the end of your form put in the following code:
     <%= textile_editor_initialize %> **Important!**
 
 
-Then, just save your view and check it out
+Then, just save your view and check it out.
 
 
 ## Testing
@@ -65,6 +63,12 @@ Then, just save your view and check it out
 ## Preview Feature
 
 Textile Editor Preview feature is no longer supported. The wiki page will be updated to show two different ways of adding the preview feature to your app.
+
+## Requests for improvement
+
+A lot of features have been removed and added here. This is completely refactored for simplicity and support of form builders other than the Rails default.
+To request for improvement, please do not send email to the maintainer. Create an issue instead. Thank you.
+
 
 ## More Info on Textile
 
