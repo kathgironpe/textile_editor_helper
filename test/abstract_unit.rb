@@ -8,6 +8,8 @@ require 'action_view/helpers'
 require 'action_view/asset_paths'
 require 'action_controller/test_case'
 
+require 'simple_form'
+
 # Show backtraces for deprecated behavior for quicker cleanup.
 ActiveSupport::Deprecation.debug = true
 
@@ -17,3 +19,5 @@ ActionController::Base.logger = nil
 ActionController::Routing::Routes.reload rescue nil
 
 ActionController::Base.asset_host = "localhost"
+
+require_relative 'support_methods'

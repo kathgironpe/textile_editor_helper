@@ -2,17 +2,17 @@
 Textile Editor Helper
 *********************
 
-The assets have been copied. 
+The assets have been copied.
 
 
 *********************
 Example App
 *********************
 
-rails g something -d mysql
+rails new something -d mysql
 rake db:create RAILS_ENV=development
-rails g scaffold Post body:text 
-rake db:migrate 
+rails g scaffold Post body:text
+rake db:migrate
 
 *********************
 Example layout
@@ -23,7 +23,7 @@ Example layout
 <head>
   <title>Peace</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
-  
+
   <%= csrf_meta_tags %>
   <%= yield :head %>
 </head>

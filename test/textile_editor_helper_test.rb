@@ -1,6 +1,6 @@
 require_relative 'test_helper'
 require_relative 'abstract_unit'
-require_relative '../lib/textile_editor_helper'
+require_relative '../lib/helpers/default'
 require 'ostruct'
 
 class TextileEditorHelperTest  < MiniTest::Unit::TestCase
@@ -11,25 +11,7 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
   include ActionView::Helpers::FormHelper
   include ActionView::Helpers::JavaScriptHelper
 
-  def setup
-    @controller = Class.new do
-      attr_reader :url_for_options
-      def url_for(options, *parameters_for_method_reference)
-        @url_for_options = options
-        "http://www.example.com"
-      end
-
-      def request;  @request  ||= ActionController::TestRequest.new;  end
-      def response; @response ||= ActionController::TestResponse.new; end
-    end
-    @controller = @controller.new
-    @article = OpenStruct.new(:body => nil)
-  end
-
-  # support methods
-  def request
-    @controller.request
-  end
+  include SupportMethods
 
   def create_simple_editor(object, field, options={})
     output = textile_editor(object, field, options.merge(:simple => true))
@@ -41,52 +23,13 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     assert_equal  text_area(object, field, options), output
   end
 
-  def controller
-    setup
-  end
-
-  def config
-    Class.new do
-
-      class << self
-        def perform_caching
-          true
-        end
-
-        def asset_path
-          @asset_path
-        end
-
-        def assets_dir
-          ""
-        end
-
-        def relative_url_root
-          nil
-        end
-
-        def asset_host
-          nil
-        end
-      end
-
-    end
-  end
-
-  def framework_initialize_output(framework)
-    case framework
-    when :jquery
-      %{$(document).ready(function() \{}
-    end
-  end
-
   def pre_initialize_output(framework)
     %{<link href="/stylesheets/textile-editor.css" media="screen" rel="stylesheet" type="text/css" />
       <script src="/javascripts/textile-editor.js" type="text/javascript"></script>
       <script type="text/javascript">
       /* <![CDATA[ */
     } +
-    framework_initialize_output(framework)
+    %{$(document).ready(function() \{}
   end
 
   def post_initialize_output
@@ -104,10 +47,9 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     end
     expected << post_initialize_output
     expected.join("\n").split("\n").map { |e| e.lstrip }.join("\n").chomp
-  end
+   end
 
   # Tests
-
   def test_textile_editor
     assert_nil @textile_editor_ids
     create_extended_editor('article', 'body')
@@ -119,7 +61,6 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     create_simple_editor('article', 'body')
     assert_equal [['article_body', 'simple']], @textile_editor_ids
   end
-
 
   def test_textile_editor_with_custom_id
     assert_nil @textile_editor_ids
@@ -137,36 +78,36 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     create_extended_editor('article', 'body')
     output = textile_editor_initialize()
     assert_equal expected_initialize_output(:jquery, [
-      ['article_body', 'extended']
+                                            ['article_body', 'extended']
     ]), output
 
     create_simple_editor('article', 'body_excerpt')
     output = textile_editor_initialize()
     assert_equal expected_initialize_output(:jquery, [
-      ['article_body', 'extended'],
-      ['article_body_excerpt', 'simple']
+                                            ['article_body', 'extended'],
+                                            ['article_body_excerpt', 'simple']
     ]), output
 
     output = textile_editor_initialize(:framework => :jquery)
     assert_equal expected_initialize_output(:jquery, [
-      ['article_body', 'extended'],
-      ['article_body_excerpt', 'simple']
+                                            ['article_body', 'extended'],
+                                            ['article_body_excerpt', 'simple']
     ]), output
 
     # test using custom default options
     textile_editor_options :framework => :jquery
     output = textile_editor_initialize()
     assert_equal expected_initialize_output(:jquery, [
-      ['article_body', 'extended'],
-      ['article_body_excerpt', 'simple']
+                                            ['article_body', 'extended'],
+                                            ['article_body_excerpt', 'simple']
     ]), output
   end
 
   def test_textile_editor_inititalize_with_arbitrary_ids
     output = textile_editor_initialize(:story_comment, :story_body)
     assert_equal expected_initialize_output(:jquery, [
-      ['story_comment', 'extended'],
-      ['story_body', 'extended']
+                                            ['story_comment', 'extended'],
+                                            ['story_body', 'extended']
     ]), output
   end
 
@@ -174,18 +115,16 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     b = '<button id="test_button" onclick="alert(\'Hello!\')" title="Hello world">Hello</button>'
     button_data = ["TextileEditor.buttons.push(\"%s\");" % escape_javascript(b)]
     actual = textile_editor_button('Hello',
-      :id => 'test_button',
-      :onclick => "alert('Hello!')",
-      :title => 'Hello world'
-    )
+                                   :id => 'test_button',
+                                   :onclick => "alert('Hello!')",
+                                   :title => 'Hello world'
+                                  )
 
     assert_equal button_data, actual
 
     create_extended_editor('article', 'body')
     output = textile_editor_initialize()
-    assert_equal expected_initialize_output(:jquery, [
-      ['article_body', 'extended']
-    ], button_data), output
+    assert_equal expected_initialize_output(:jquery, [['article_body', 'extended']], button_data), output
   end
 
   def test_textile_extract_dom_ids_works_with_arrayed_hash
@@ -218,10 +157,10 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     expected = ['TextileEditor.buttons.push("%s");' % escape_javascript(b)]
 
     actual = textile_editor_button('Hello',
-      :id => 'test_button',
-      :onclick => "alert('Hello!')",
-      :title => 'Hello world'
-    )
+                                   :id => 'test_button',
+                                   :onclick => "alert('Hello!')",
+                                   :title => 'Hello world'
+                                  )
 
     assert_equal expected, actual
   end
