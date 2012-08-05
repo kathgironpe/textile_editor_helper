@@ -5,24 +5,7 @@ Textile Editor Helper is a plugin for Ruby on Rails to add a Textile toolbar abo
 This version of Textile Editor Helper is a fork of the code found at http://svn.webtest.wvu.edu/repos/rails/plugins/textile_editor_helper/ to allow for use with the form_for method.
 
 
-## Simple vs. Extended
-
-
-Textile Editor Helper has a built-in mode to show only a sub-selection of available tags called simple.
-
-Currently the _simple_ tags are: _bold_, _underline_, _italic_, _strikethrough_.
-
-To create a text area that will only use the 'simple' tags create your text area with the following code:
-
-    <%= textile_editor 'object', 'field', :simple=>true -%>
-
-or
-
-	 <%= f.textile_editor :body, :simple=>true %>
-
-
 ##Dependencies
-
 
 To use Textile Editor Helper you must be using either the jQuery JavaScript library.
 
