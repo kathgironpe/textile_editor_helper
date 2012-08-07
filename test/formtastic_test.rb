@@ -1,8 +1,8 @@
 require_relative 'test_helper'
-require_relative '../lib/helpers/simple_form'
+require_relative '../lib/helpers/formtastic'
 require_relative 'abstract_unit'
 
-class SimpleFormTest  < MiniTest::Unit::TestCase
+class FormtasticTest  < MiniTest::Unit::TestCase
 
   include SimpleForm::ActionViewExtensions::FormHelper
   include SimpleForm::Inputs
@@ -22,7 +22,7 @@ class SimpleFormTest  < MiniTest::Unit::TestCase
     output.join("\n").html_safe
   end
 
-  def test_textile_editor_initialize_simple_form
+  def test_textile_editor_initialize_formtastic
     actual = textile_editor_initialize()
     assert_equal expected_initialize_output, actual
   end

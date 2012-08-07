@@ -21,7 +21,7 @@ module TextileEditorHelper
         desc 'Creates a TextileEditorHelper initializer and copies assets to public directories.'
       end
 
-      def copy_javascript_asset
+      def copy_assets
         if asset_pipeline_enabled?
           js_destination = 'app/assets/javascripts'
           css_destination = 'app/assets/stylesheets'
@@ -33,12 +33,7 @@ module TextileEditorHelper
         copy_file 'assets/javascripts/textile-editor.js', "#{js_destination}/textile-editor.js"
         copy_file 'assets/javascripts/textile-editor-config.js', "#{js_destination}/textile-editor-config.js"
         copy_file 'assets/stylesheets/textile-editor.css', "#{css_destination}/textile-editor.css"
-        lines = File.read("config/routes.rb").split("\n")
-        lines[3, 0] = "match 'textile_preview' => 'textile_preview#show'"
-        File.open("config/routes.rb", 'w') { |f| f.write(lines.join("\n")) }
 
-
-        directory 'app/views/textile_preview', 'app/views/textile_preview'
         directory 'assets/images/textile-editor', 'public/images/textile-editor'
 
         readme 'README' if behavior == :invoke

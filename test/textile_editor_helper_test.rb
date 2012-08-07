@@ -65,18 +65,4 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
     assert_equal expected_initialize_output, output
   end
 
-  def test_textile_editor_button
-   # TO DO: Refactor
-   # b = '<button id="test_button" onclick="alert(\'Hello!\')" title="Hello world">Hello</button>'
-   # expected = ['TextileEditor.buttons.push("%s");' % escape_javascript(b)]
-
-   # actual = textile_editor_button('Hello',
-   #                                :id => 'test_button',
-   #                                :onclick => "alert('Hello!')",
-   #                                :title => 'Hello world'
-   #                               )
-   #
-   #  assert_equal expected, actual
-  end
-
 end

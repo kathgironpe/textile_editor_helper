@@ -17,9 +17,10 @@ Gem::Specification.new do |gem|
 
   #dependencies
   gem.add_development_dependency 'rails', '>= 3.2.0'
-  gem.add_development_dependency 'simple_form', '>= 2.0.2'
+  gem.add_development_dependency 'simple_form'
+  gem.add_development_dependency 'formtastic'
   gem.add_development_dependency 'thor'
   gem.add_development_dependency 'minitest'
-  gem.add_development_dependency 'cucumber', '>=1.1.4'
-  gem.add_development_dependency 'rspec', '>= 2.0.0'
+  gem.add_development_dependency 'cucumber'
+  gem.add_development_dependency 'rspec'
 end

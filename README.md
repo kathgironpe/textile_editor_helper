@@ -40,7 +40,11 @@ To use the Textile Editor Helper with a specific text area, you can choose betwe
 
 ### For simple_form users
 
-    <%= f.input :body, :as=>:textile_editor %>
+    <%= f.input :body, :as => :textile_editor %>
+
+### For formtastic users
+
+    <%= f.input :body, :as => :textile_editor %>
 
 **Just like writing a text area tag!**
 

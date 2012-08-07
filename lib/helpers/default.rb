@@ -1,6 +1,4 @@
-#For default Rails text helpers
 module ActionView::Helpers
-
   class FormBuilder
     def textile_editor(method, options = {})
       @template.textile_editor(@object_name, method, options.merge(:object => @object))
@@ -142,7 +140,5 @@ module ActionView::Helpers
       editor_id = options[:id] || name
       text_area_tag(name, content, options.merge(:class=>"textile_editor"))
     end
-
   end
-
 end

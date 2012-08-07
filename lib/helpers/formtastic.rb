@@ -1,5 +1,5 @@
-module SimpleForm
-  module ActionViewExtensions
+module Formtastic
+  module Helpers
     module FormHelper
       def textile_editor_initialize(*dom_ids)
         output = []
@@ -20,10 +20,24 @@ module SimpleForm
   end
 
   module Inputs
-    class TextileEditorInput < Base
 
-      def input
-        @builder.text_area(attribute_name, input_html_options)
+    class TextileEditorInput
+      include Base
+      include Base::Placeholder
+
+      def input_html_options
+        {
+          :cols => builder.default_text_area_width,
+          :rows => builder.default_text_area_height,
+          :class => "textile_editor"
+        }.merge(super)
+      end
+
+      def to_html
+        input_wrapping do
+          label_html <<
+          builder.text_area(method, input_html_options)
+        end
       end
 
     end
