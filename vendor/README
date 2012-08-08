@@ -36,6 +36,15 @@ Example layout
 </html>
 
 
+***************************
+Example application.js
+***************************
+
+//= require jquery
+//= require jquery_ujs
+//= require textile-editor
+//= require textile-editor-config
+
 ****************************
 Example form
 ****************************

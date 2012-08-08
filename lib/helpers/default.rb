@@ -89,21 +89,7 @@ module ActionView::Helpers
     #
     # This means that the support files must be loaded outside of the AJAX request, either
     # via a call to this helper or the textile_editor_support() helper
-    def textile_editor_initialize(*dom_ids)
-      output = []
-      unless request.xhr?
-        output << '<script type="text/javascript">'
-        output << %{$(document).ready(function() \{}
-        output << '/* <![CDATA[ */'
-        output << %{$.each($('textarea.textile_editor'),function(i,el){
-                      TextileEditor.initialize($(el).attr('id'));
-                       });}
-                       output << '/* ]]> */'
-                       output << '});'
-                       output << '</script>'
-      end
-      output.join("\n").html_safe
-    end
+    include TextileEditorInitialize
 
   end
 

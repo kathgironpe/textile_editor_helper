@@ -30,6 +30,13 @@ and do
 
 	rails g textile_editor_helper:install
 
+It's important that you read the example provided. Your application.js should look like the following. Make sure to update the order of your JS files.
+
+    //= require jquery
+    //= require jquery_ujs
+    //= require textile-editor
+    //= require textile-editor-config
+
 To use the Textile Editor Helper with a specific text area, you can choose between the following options:
 
     <%= f.textile_editor :description %>

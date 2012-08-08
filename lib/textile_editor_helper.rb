@@ -1,9 +1,8 @@
 require "textile_editor_helper/version"
-
 require 'action_view'
 
-
-autoload :ActionView, 'helpers/default'
+require_relative 'helpers/textile_editor_initialize'
+require_relative 'helpers/default'
 
 begin
   require 'simple_form'
