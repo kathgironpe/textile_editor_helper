@@ -1,3 +1,5 @@
+require_relative 'textile_editor_initialize'
+
 module ActionView::Helpers
   class FormBuilder
     def textile_editor(method, options = {})
@@ -31,7 +33,6 @@ module ActionView::Helpers
     #   #      #{@entry.body}
     #   #    </textarea>
     def textile_editor(object_name, method, options = {})
-      editor_id = options[:id] || '%s_%s' % [object_name, method]
       output = []
       output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options.merge(:class=>"textile_editor"))
       output.join("\n").html_safe
@@ -39,6 +40,15 @@ module ActionView::Helpers
 
     def textile_editor_options(options={})
       (@textile_editor_options ||= { }).merge! options
+    end
+
+
+    def textile_editor_initialize
+      unless request.xhr?
+        TextileEditorInitialize.textile_editor_initialize
+      else
+        [].join("\n").html_safe
+      end
     end
 
     def textile_editor_support
@@ -89,21 +99,6 @@ module ActionView::Helpers
     #
     # This means that the support files must be loaded outside of the AJAX request, either
     # via a call to this helper or the textile_editor_support() helper
-    def textile_editor_initialize(*dom_ids)
-      output = []
-      unless request.xhr?
-        output << '<script type="text/javascript">'
-        output << %{$(document).ready(function() \{}
-        output << '/* <![CDATA[ */'
-        output << %{$.each($('textarea.textile_editor'),function(i,el){
-                      TextileEditor.initialize($(el).attr('id'));
-                       });}
-                       output << '/* ]]> */'
-                       output << '});'
-                       output << '</script>'
-      end
-      output.join("\n").html_safe
-    end
 
   end
 
@@ -137,7 +132,6 @@ module ActionView::Helpers
     #   textile_editor_tag 'comment', nil, :class => 'comment_input'
     #   # => <textarea class="comment_input" id="comment" name="comment"></textarea>
     def textile_editor_tag(name, content = nil, options = {})
-      editor_id = options[:id] || name
       text_area_tag(name, content, options.merge(:class=>"textile_editor"))
     end
   end
