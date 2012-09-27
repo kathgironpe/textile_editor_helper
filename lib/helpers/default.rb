@@ -74,8 +74,8 @@ module ActionView::Helpers
     def textile_editor_button(text, options={})
       return textile_editor_button_separator  if text == :separator
       button = content_tag(:button, text, options)
-      button = "TextileEditor.buttons.push(\"%s\");" % escape_javascript(button)
-      (@textile_editor_buttons ||= []) << button.html_safe
+      button = "TextileEditor.buttons.push(""#{button}"");".html_safe
+      (@textile_editor_buttons ||= []) << button
     end
 
 

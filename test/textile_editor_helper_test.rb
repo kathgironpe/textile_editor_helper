@@ -36,11 +36,10 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
   end
 
   def test_textile_editor_initialize_with_custom_buttons
-    b = '<button id="test_button" onclick="alert(\'Hello!\')" title="Hello world">Hello</button>'
-    button_data = ["TextileEditor.buttons.push(\"%s\");" % escape_javascript(b)]
+    b = '<button id="test_button" title="Hello world">Hello</button>'
+    button_data = ["TextileEditor.buttons.push(""#{b}"");" ]
     actual = textile_editor_button('Hello',
                                    :id => 'test_button',
-                                   :onclick => "alert('Hello!')",
                                    :title => 'Hello world'
                                   )
 
