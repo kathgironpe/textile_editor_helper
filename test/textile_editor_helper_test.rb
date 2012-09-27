@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 require_relative 'abstract_unit'
 require_relative '../lib/helpers/default'
+require_relative '../lib/helpers/textile_editor_initialize'
 require 'ostruct'
 
 class TextileEditorHelperTest  < MiniTest::Unit::TestCase
@@ -19,17 +20,7 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
   end
 
   def expected_initialize_output
-    output = []
-    output << '<script type="text/javascript">'
-    output << %{$(document).ready(function() \{}
-    output << '/* <![CDATA[ */'
-    output << %{$.each($('textarea.textile_editor'),function(i,el){
-                      TextileEditor.initialize($(el).attr('id'));
-                       });}
-    output << '/* ]]> */'
-    output << '});'
-    output << '</script>'
-    output.join("\n").html_safe
+    TextileEditorInitialize.textile_editor_initialize
   end
 
   # Tests
@@ -41,11 +32,6 @@ class TextileEditorHelperTest  < MiniTest::Unit::TestCase
   def test_textile_editor_initialize
     create_editor('article', 'body')
     output = textile_editor_initialize()
-    assert_equal expected_initialize_output, output
-  end
-
-  def test_textile_editor_inititalize_with_arbitrary_ids
-    output = textile_editor_initialize(:story_comment, :story_body)
     assert_equal expected_initialize_output, output
   end
 

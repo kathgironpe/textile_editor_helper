@@ -66,6 +66,7 @@ Then, just save your view and check it out.
 
 <a href="https://github.com/bridgeutopia/textile_editor_helper/wiki/Examples" target="_blank">Basic Examples</a>
 
+Recently created a Rails 3.2.8 app that uses simple_form and textile_editor_helper, <a href="https://github.com/bridgeutopia/textile-editor-helper-examples" target="_blank">check it out</a>.
 
 ## Testing
 
