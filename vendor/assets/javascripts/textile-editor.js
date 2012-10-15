@@ -274,7 +274,7 @@ TextileEditor.Methods = {
       // *Bold text *here => *Bold text*
       if (selectedText.match(/\s$/g)) {
         selectedText = selectedText.replace(/\s$/g,'');
-        followupText = ' ';
+        followupText = ' ' + followupText;
       }
       
       // no clue, i'm sure it made sense at the time i wrote it
