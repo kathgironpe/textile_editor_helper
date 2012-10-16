@@ -1,36 +1,36 @@
 /*
 
-Textile Editor v0.2
-created by: dave olsen, wvu web services
-created on: march 17, 2007
-project page: slateinfo.blogs.wvu.edu
+   Textile Editor v0.2
+   created by: dave olsen, wvu web services
+   created on: march 17, 2007
+   project page: slateinfo.blogs.wvu.edu
 
-inspired by: 
- - Patrick Woods, http://www.hakjoon.com/code/38/textile-quicktags-redirect & 
- - Alex King, http://alexking.org/projects/js-quicktags
+   inspired by:
+   - Patrick Woods, http://www.hakjoon.com/code/38/textile-quicktags-redirect &
+   - Alex King, http://alexking.org/projects/js-quicktags
 
 features:
- - supports: IE7, FF2, Safari2
- - ability to use "simple" vs. "extended" editor
- - supports all block elements in textile except footnote
- - supports all block modifier elements in textile
- - supports simple ordered and unordered lists
- - supports most of the phrase modifiers, very easy to add the missing ones
- - supports multiple-paragraph modification
- - can have multiple "editors" on one page, access key use in this environment is flaky
- - access key support
- - select text to add and remove tags, selection stays highlighted
- - seamlessly change between tags and modifiers
- - doesn't need to be in the body onload tag
- - can supply your own, custom IDs for the editor to be drawn around
+- supports: IE7, FF2, Safari2
+- ability to use "simple" vs. "extended" editor
+- supports all block elements in textile except footnote
+- supports all block modifier elements in textile
+- supports simple ordered and unordered lists
+- supports most of the phrase modifiers, very easy to add the missing ones
+- supports multiple-paragraph modification
+- can have multiple "editors" on one page, access key use in this environment is flaky
+- access key support
+- select text to add and remove tags, selection stays highlighted
+- seamlessly change between tags and modifiers
+- doesn't need to be in the body onload tag
+- can supply your own, custom IDs for the editor to be drawn around
 
 todo:
- - a clean way of providing image and link inserts
- - get the selection to properly show in IE
+- a clean way of providing image and link inserts
+- get the selection to properly show in IE
 
 more on textile:
- - Textism, http://www.textism.com/tools/textile/index.php
- - Textile Reference, http://hobix.com/textile/
+- Textism, http://www.textism.com/tools/textile/index.php
+- Textile Reference, http://hobix.com/textile/
 
 */
 
@@ -63,16 +63,16 @@ TextileEditor.Methods = {
     var toolbar = document.createElement("div");
     toolbar.id = "textile-toolbar-" + canvas;
     toolbar.className = 'textile-toolbar';
-    
+
     this.canvas = document.getElementById(canvas);
-    this.canvas.parentNode.insertBefore(toolbar, this.canvas); 
-    this.openTags = new Array();      
+    this.canvas.parentNode.insertBefore(toolbar, this.canvas);
+    this.openTags = new Array();
 
 
     // Create the local Button array by assigning theButtons array to edButtons
     var edButtons = new Array();
     edButtons = this.buttons;
-    
+
     var standardButtons = new Array();
     for(var i = 0; i < edButtons.length; i++) {
       var thisButton = this.prepareButton(edButtons[i]);
@@ -90,25 +90,25 @@ TextileEditor.Methods = {
         }
       }
     } // end for
-    
+
     var te = this;
     var buttons = toolbar.getElementsByTagName('button');
     for(var i = 0; i < buttons.length; i++) {
-    //$A(toolbar.getElementsByTagName('button')).each(function(button) {
+      //$A(toolbar.getElementsByTagName('button')).each(function(button) {
       if (!buttons[i].onclick) {
         buttons[i].onclick = function() { te.insertTag(this); return false; }
       } // end if
-      
+
       buttons[i].tagStart = buttons[i].getAttribute('tagStart');
       buttons[i].tagEnd = buttons[i].getAttribute('tagEnd');
       buttons[i].open = buttons[i].getAttribute('open');
       buttons[i].textile_editor = te;
       buttons[i].canvas = te.canvas;
       // console.log(buttons[i].canvas);
-    //});
+      //});
     }
   }, // end initialize
-  
+
   // draw individual buttons (edShowButton)
   prepareButton: function(button) {
     if (button.separator) {
@@ -134,9 +134,9 @@ TextileEditor.Methods = {
 
     theButton.accessKey = button.access;
     theButton.title = button.title;
-    return theButton; 
+    return theButton;
   }, // end prepareButton
-  
+
   // if clicked, no selected text, tag not open highlight button
   // (edAddTag)
   addTag: function(button) {
@@ -205,7 +205,7 @@ TextileEditor.Methods = {
 
       // check if text has been selected
       if (sel.text.length > 0) {
-        textSelected = true;  
+        textSelected = true;
       }
 
       // set-up newline regex's so we can swap tags across multiple paragraphs
@@ -229,7 +229,7 @@ TextileEditor.Methods = {
       // check if text has been selected
       if (startPos != endPos) {
         textSelected = true;
-        var selectedText = myField.value.substring(startPos, endPos); 
+        var selectedText = myField.value.substring(startPos, endPos);
       }
 
       // set-up newline regex's so we can swap tags across multiple paragraphs
@@ -269,14 +269,14 @@ TextileEditor.Methods = {
       }
 
       // remove space from the end of the selectedText.
-      // Fixes a bug that causes any browser running under Microsoft Internet Explorer 
+      // Fixes a bug that causes any browser running under Microsoft Internet Explorer
       // to append an additional space before the closing element.
       // *Bold text *here => *Bold text*
       if (selectedText.match(/\s$/g)) {
         selectedText = selectedText.replace(/\s$/g,'');
         followupText = ' ' + followupText;
       }
-      
+
       // no clue, i'm sure it made sense at the time i wrote it
       if (followupText.match(/^\n/)) {
         newlineFollowup = '';
@@ -300,7 +300,7 @@ TextileEditor.Methods = {
         }
         re_replace = new RegExp(' (\\*|\\#) ','g');
 
-        // try to remove bullets in text copied from ms word **Mac Only!** 
+        // try to remove bullets in text copied from ms word **Mac Only!**
         re_word_bullet_m_s = new RegExp('• ','g'); // mac/safari
         re_word_bullet_m_f = new RegExp('∑ ','g'); // mac/firefox
         selectedText = selectedText.replace(re_word_bullet_m_s,'').replace(re_word_bullet_m_f,'');
@@ -311,10 +311,10 @@ TextileEditor.Methods = {
           // if tag that begins the selection matches the one clicked, remove them all
           if (selectedText.match(re_tag)) {
             finalText = beginningText
-                    + newlineStart
-                    + selectedText.replace(re_replace,'')
-                    + newlineEnd
-                    + followupText;
+            + newlineStart
+            + selectedText.replace(re_replace,'')
+            + newlineEnd
+            + followupText;
             if (matches = selectedText.match(/ (\*|\#) /g)) {
               listItems = matches.length;
             }
@@ -324,10 +324,10 @@ TextileEditor.Methods = {
           // else replace the current tag type with the selected tag type
           else {
             finalText = beginningText
-                    + newlineStart
-                    + selectedText.replace(re_replace,button.tagStart)
-                    + newlineEnd
-                    + followupText;
+            + newlineStart
+            + selectedText.replace(re_replace,button.tagStart)
+            + newlineEnd
+            + followupText;
           }
         }
 
@@ -335,16 +335,16 @@ TextileEditor.Methods = {
         // NOTE: the items in a list will only be replaced if a newline starts with some character, not a space
         else {
           finalText = beginningText
-                  + newlineStart
-                        + button.tagStart
-                  + selectedText.replace(newlineReplaceRegexClean,newlineReplaceClean + button.tagStart).replace(/\n(\S)/g,'\n' + button.tagStart + '$1')
-                  + newlineEnd
-                  + followupText;
+          + newlineStart
+          + button.tagStart
+          + selectedText.replace(newlineReplaceRegexClean,newlineReplaceClean + button.tagStart).replace(/\n(\S)/g,'\n' + button.tagStart + '$1')
+          + newlineEnd
+          + followupText;
           if (matches = selectedText.match(/\n(\S)/g)) {
             listItems = matches.length;
           }
           posDiffPos = 3 + listItems*3;
-        } 
+        }
       }
 
       // now lets look and see if the user is trying to muck with a block or block modifier
@@ -373,9 +373,9 @@ TextileEditor.Methods = {
         }
 
         // if tag already up is the same as the tag provided replace the whole tag
-        if (tagPartBlock == button.tagStart) { 
+        if (tagPartBlock == button.tagStart) {
           insertTag  = tagPartBlock + tagPartModifierOrig; // use Orig because it's escaped for regex
-          drawSwitch = 0; 
+          drawSwitch = 0;
         }
         // else if let's check to add/remove block modifier
         else if ((tagPartModifier == button.tagStart) || (newm = tagPartModifier.match(/[\(]{2,}/g))) {
@@ -395,7 +395,7 @@ TextileEditor.Methods = {
           else {
             if (button.tagStart == tagPartModifier) {
               insertTag =  tagPartBlock;
-              } // going to rely on the default empty insertModifier
+            } // going to rely on the default empty insertModifier
             else {
 
               if (button.tagStart.match(/(\>|\<\>|\<|\=)/g)) {
@@ -411,46 +411,46 @@ TextileEditor.Methods = {
         }
         // indentation of list items
         else if (listPartMatches = re_list_items.exec(tagPartBlock)) {
-            var listTypeMatch = listPartMatches[1];
-            var indentLength = tagPartBlock.length - 2;
-            var listInsert = '';
-            if (button.tagStart == '(') {
-              indentLength = indentLength + 1;
-            }
-            else {
-              indentLength = indentLength - 1;
-            }
-            if (listTypeMatch.match(/[\*]{1,}/g)) {
-              var listType = '*';
-              var listReplace = '\\*';
-            }
-            else {
-              var listType = '#';
-              var listReplace = '\\#';
-            }
-            for (var i = 0; i < indentLength; i++) {
-              listInsert = listInsert + listType;
-            }
-            if (listInsert != '') {
-              insertTag = ' ' + listInsert + ' ';
-            }
-            else {
-              insertTag = '';
-            }
-            tagPartBlock = tagPartBlock.replace(/(\*|\#)/g,listReplace);
-            drawSwitch = 1;
-            captureListStart = true;
-            periodAddition = '';
-            periodAdditionClean = '';
-            if (matches = selectedText.match(/\n\s/g)) {
-              listItemsAddition = matches.length;
-            }
+          var listTypeMatch = listPartMatches[1];
+          var indentLength = tagPartBlock.length - 2;
+          var listInsert = '';
+          if (button.tagStart == '(') {
+            indentLength = indentLength + 1;
+          }
+          else {
+            indentLength = indentLength - 1;
+          }
+          if (listTypeMatch.match(/[\*]{1,}/g)) {
+            var listType = '*';
+            var listReplace = '\\*';
+          }
+          else {
+            var listType = '#';
+            var listReplace = '\\#';
+          }
+          for (var i = 0; i < indentLength; i++) {
+            listInsert = listInsert + listType;
+          }
+          if (listInsert != '') {
+            insertTag = ' ' + listInsert + ' ';
+          }
+          else {
+            insertTag = '';
+          }
+          tagPartBlock = tagPartBlock.replace(/(\*|\#)/g,listReplace);
+          drawSwitch = 1;
+          captureListStart = true;
+          periodAddition = '';
+          periodAdditionClean = '';
+          if (matches = selectedText.match(/\n\s/g)) {
+            listItemsAddition = matches.length;
+          }
         }
         // must be a block modification e.g. p>. to p<.
         else {
 
           // if this is a block modification/addition
-          if (button.tagStart.match(/(h1|h2|h3|h4|h5|h6|bq|p)/g)) { 
+          if (button.tagStart.match(/(h1|h2|h3|h4|h5|h6|bq|p)/g)) {
             if (tagPartBlock == '') {
               drawSwitch = 2;
             }
@@ -508,10 +508,10 @@ TextileEditor.Methods = {
         if ((drawSwitch == 0) || (drawSwitch == 1)) {
           if (drawSwitch == 0) { // completely removing a tag
             finalText = beginningText
-                    + newlineStart
-                    + selectedText.replace(re_start,'').replace(re_middle,newlineReplaceClean)
-                    + newlineEnd
-                    + followupText;
+            + newlineStart
+            + selectedText.replace(re_start,'').replace(re_middle,newlineReplaceClean)
+            + newlineEnd
+            + followupText;
             if (matches = selectedText.match(newlineReplaceRegexClean)) {
               mplier = mplier + matches.length;
             }
@@ -519,10 +519,10 @@ TextileEditor.Methods = {
           }
           else { // modifying a tag, though we do delete bullets here
             finalText = beginningText
-                    + newlineStart
-                    + selectedText.replace(re_old,insertTag + periodAdditionClean)
-                    + newlineEnd
-                    + followupText;
+            + newlineStart
+            + selectedText.replace(re_old,insertTag + periodAdditionClean)
+            + newlineEnd
+            + followupText;
 
             if (matches = selectedText.match(newlineReplaceRegexClean)) {
               mplier = mplier + matches.length;
@@ -560,17 +560,17 @@ TextileEditor.Methods = {
         }
         else { // for adding tags other then bullets (have their own statement)
           finalText = beginningText
-                  + newlineStart
-                        + insertTag + '. '
-                  + selectedText.replace(newlineReplaceRegexClean,button.tagEnd + '\n' + insertTag + '. ')
-                  + newlineFollowup
-                  + newlineEnd
-                  + followupText;
+          + newlineStart
+          + insertTag + '. '
+          + selectedText.replace(newlineReplaceRegexClean,button.tagEnd + '\n' + insertTag + '. ')
+          + newlineFollowup
+          + newlineEnd
+          + followupText;
           if (matches = selectedText.match(newlineReplaceRegexClean)) {
             mplier = mplier + matches.length;
           }
           posDiffPos = insertTag.length + 2 + (mplier*4);
-        }       
+        }
       }
 
       // swap in and out the simple tags around a selection like bold
@@ -582,10 +582,10 @@ TextileEditor.Methods = {
         re_middle = new RegExp('\\' + button.tagEnd + newlineReplaceRegexDirty + '\\' + button.tagStart,'g');
         if (selectedText.match(re_start) && selectedText.match(re_end)) {
           finalText = beginningText
-                  + newlineStart
-                  + selectedText.replace(re_start,'').replace(re_end,'').replace(re_middle,newlineReplaceClean)
-                  + newlineEnd
-                  + followupText;
+          + newlineStart
+          + selectedText.replace(re_start,'').replace(re_end,'').replace(re_middle,newlineReplaceClean)
+          + newlineEnd
+          + followupText;
           if (matches = selectedText.match(newlineReplaceRegexClean)) {
             mplier = mplier + matches.length;
           }
@@ -593,12 +593,12 @@ TextileEditor.Methods = {
         }
         else {
           finalText = beginningText
-                  + newlineStart
-                        + button.tagStart
-                  + selectedText.replace(newlineReplaceRegexClean,button.tagEnd + newlineReplaceClean + button.tagStart)
-                  + button.tagEnd
-                  + newlineEnd
-                  + followupText;
+          + newlineStart
+          + button.tagStart
+          + selectedText.replace(newlineReplaceRegexClean,button.tagEnd + newlineReplaceClean + button.tagStart)
+          + button.tagEnd
+          + newlineEnd
+          + followupText;
           if (matches = selectedText.match(newlineReplaceRegexClean)) {
             mplier = mplier + matches.length;
           }
@@ -625,14 +625,14 @@ TextileEditor.Methods = {
           buttonStart = button.tagStart;
         }
         if (button.tagStart.match(re_p)) { // make sure that invoking block modifiers don't do anything
-          finalText = beginningText 
-                     + followupText;
+          finalText = beginningText
+          + followupText;
           cursorPos = startPos;
         }
         else {
-          finalText = beginningText 
-                      + buttonStart
-                      + followupText;
+          finalText = beginningText
+          + buttonStart
+          + followupText;
           this.addTag(button);
           cursorPos = startPos + buttonStart.length;
         }
@@ -648,9 +648,9 @@ TextileEditor.Methods = {
         else {
           buttonEnd = button.tagEnd
         }
-        finalText = beginningText 
-                    + button.tagEnd
-                    + followupText;
+        finalText = beginningText
+        + button.tagEnd
+        + followupText;
         this.removeTag(button);
         cursorPos = startPos + button.tagEnd.length;
       }

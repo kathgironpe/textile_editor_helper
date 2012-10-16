@@ -5,7 +5,7 @@ Textile Editor Helper is a plugin for Ruby on Rails to add a Textile toolbar abo
 This version of Textile Editor Helper is a fork of the code found at http://svn.webtest.wvu.edu/repos/rails/plugins/textile_editor_helper/ to allow for use with the form_for method.
 
 
-##Dependencies
+## Dependencies
 
 To use Textile Editor Helper you must be using either the jQuery JavaScript library.
 
@@ -35,7 +35,6 @@ It's important that you read the example provided. Your application.js should lo
     //= require jquery
     //= require jquery_ujs
     //= require textile-editor
-    //= require textile-editor-config
 
 To use the Textile Editor Helper with a specific text area, you can choose between the following options:
 
