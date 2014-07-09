@@ -1,4 +1,7 @@
-## Textile Editor Helper [![Build Status](https://secure.travis-ci.org/bridgeutopia/textile_editor_helper.png)](http://travis-ci.org/bridgeutopia/textile_editor_helper)
+## Textile Editor Helper
+
+[![Build Status](https://secure.travis-ci.org/katgironpe/textile_editor_helper.png)](http://travis-ci.org/katgironpe/textile_editor_helper)
+[![Code Climate](https://codeclimate.com/github/katgironpe/textile_editor_helper.png)](https://codeclimate.com/github/katgironpe/textile_editor_helper)
 
 Textile Editor Helper is a plugin for Ruby on Rails to add a Textile toolbar above textareas.
 
@@ -7,9 +10,9 @@ This version of Textile Editor Helper is a fork of the code found at http://svn.
 
 ## Dependencies
 
-To use Textile Editor Helper you must be using either the jQuery JavaScript library.
+To use Textile Editor Helper you must use the jQuery JavaScript library.
 
-jQuery is required and make sure $(document).ready() method is called.
+Follow best practices like adding JS files at the bottom of the page (before closing body tag).
 
 For Rails 3.2, vendor/plugins was removed that is why this gem exists. Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
 
@@ -46,11 +49,11 @@ To use the Textile Editor Helper with a specific text area, you can choose betwe
 
 ### For simple_form users
 
-    <%= f.input :body, :as => :textile_editor %>
+    <%= f.input :body, as: :textile_editor %>
 
 ### For formtastic users
 
-    <%= f.input :body, :as => :textile_editor %>
+    <%= f.input :body, as: :textile_editor %>
 
 **Just like writing a text area tag!**
 
