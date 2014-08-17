@@ -14,8 +14,19 @@ To use Textile Editor Helper you must use the jQuery JavaScript library.
 
 Follow best practices like adding JS files at the bottom of the page (before closing body tag).
 
-For Rails 3.2, vendor/plugins was removed that is why this gem exists. Rails versions below 3.2 are not supported. Ruby version 1.8.7 is not supported.
+Rails versions older than 4.1.4 are not supported.
 
+If this broke something, please use:
+
+```ruby
+gem 'textile_editor_helper', '0.0.31'
+```
+
+Otherwise, this should work:
+
+```ruby
+gem 'textile_editor_helper', '0.1.0'
+```
 
 ## Rails Quickstart
 
@@ -23,44 +34,55 @@ Directions to get the helper up and running for your install:
 
 First, you'll need to add the gems required. RedCloth (or an alterntative) and htmlentities are also required.
 
-	 gem 'textile_editor_helper'
+```ruby
+gem 'textile_editor_helper'
+gem 'RedCloth'
+gem 'htmlentities'
+```
 
-	 gem 'RedCloth'
+And run the following command:
 
-	 gem 'htmlentities'
-
-and do
-
-	rails g textile_editor_helper:install
+```bash
+rails g textile_editor_helper:install
+```
 
 It's important that you read the example provided. Your application.js should look like the following. Make sure to update the order of your JS files.
 
-    //= require jquery
-    //= require jquery_ujs
-    //= require textile-editor
+```javascript
+//= require jquery
+//= require jquery_ujs
+//= require textile-editor
+```
 
 To use the Textile Editor Helper with a specific text area, you can choose between the following options:
 
-    <%= f.textile_editor :description %>
-
-    <%= textile_editor :user, "website" %>
-
-    <%= textile_editor_tag 'description', :description %>
+```ruby
+<%= f.textile_editor :description %>
+<%= textile_editor :user, "website" %>
+<%= textile_editor_tag 'description', :description %>
+```
 
 ### For simple_form users
 
-    <%= f.input :body, as: :textile_editor %>
+```ruby
+<%= f.input :body, as: :textile_editor %>
+```
 
 ### For formtastic users
 
-    <%= f.input :body, as: :textile_editor %>
+```ruby
+<%= f.input :body, as: :textile_editor %>
+```
+
 
 **Just like writing a text area tag!**
 
 At the end of your form put in the following code:
 
-    <%= textile_editor_initialize %> **Important!**
 
+```ruby
+<%= textile_editor_initialize %> **Important!**
+```
 
 Then, just save your view and check it out.
 
@@ -110,10 +132,14 @@ Textile Editor Helper was created by Dave Olsen (Javascript) and Chris Scharf (R
 The project is now maintained by <a href="http://c.kat.pe" target="_blank">Katherine G. Pe</a>
 
 
+## Notes from maintainer
+
+I am no longer using Textile as much as Markdown.
+I found this helpful before but no longer really use it.
+I still find time to maintain for those who do.
+
 ## Inspired by
 
 
 <a href="http://www.hakjoon.com/code/38/textile-quicktags-redirect" target="_blank">Patrick Woods</a> &
 <a href="http://alexking.org/projects/js-quicktags" target="_blank">Alex King</a>
-
-

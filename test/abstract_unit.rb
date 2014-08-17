@@ -2,12 +2,9 @@ $:.unshift(File.dirname(__FILE__) + '/../lib')
 
 require 'yaml'
 require 'rubygems'
-
 require 'action_controller'
-require 'action_view/helpers'
-require 'action_view/asset_paths'
 require 'action_controller/test_case'
-
+require 'action_view/helpers'
 require 'simple_form'
 
 # Show backtraces for deprecated behavior for quicker cleanup.

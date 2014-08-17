@@ -16,7 +16,7 @@ Gem::Specification.new do |gem|
   gem.version       = TextileEditorHelper::VERSION
 
   #dependencies
-  gem.add_development_dependency 'rails', '>= 3.2.0'
+  gem.add_development_dependency 'rails', '4.1.4'
   gem.add_development_dependency 'simple_form'
   gem.add_development_dependency 'formtastic'
   gem.add_development_dependency 'thor'

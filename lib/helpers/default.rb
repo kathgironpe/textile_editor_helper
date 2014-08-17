@@ -34,7 +34,8 @@ module ActionView::Helpers
     #   #    </textarea>
     def textile_editor(object_name, method, options = {})
       output = []
-      output << InstanceTag.new(object_name, method, self, options.delete(:object)).to_text_area_tag(options.merge(:class=>"textile_editor"))
+      name = "#{object_name}[#{method}]"
+      output << text_area_tag(name, nil, options.merge(class: "textile_editor"))
       output.join("\n").html_safe
     end
 

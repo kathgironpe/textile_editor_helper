@@ -9,4 +9,4 @@ Scenario: Assets are copied to rails asset directories if the default generator 
 	Then I should see file "app/assets/stylesheets/textile-editor.css"
 	And I should see file "app/assets/javascripts/textile-editor-config.js"
   And I should see file "app/assets/javascripts/textile-editor.js"
-  And I should see file "public/images/textile-editor/italic.png"
+  And I should see file "app/assets/images/textile-editor/italic.png"
