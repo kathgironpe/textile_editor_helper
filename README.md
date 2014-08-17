@@ -27,7 +27,7 @@ gem 'textile_editor_helper', '0.0.31'
 Otherwise, this should work:
 
 ```ruby
-gem 'textile_editor_helper', '0.1.0'
+gem 'textile_editor_helper', '0.1.1'
 ```
 
 ## Rails Quickstart
