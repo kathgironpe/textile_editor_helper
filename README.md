@@ -66,13 +66,13 @@ Then, just save your view and check it out.
 
 ## Examples
 
-<a href="https://github.com/bridgeutopia/textile_editor_helper/wiki/Examples" target="_blank">Basic Examples</a>
+<a href="https://github.com/katgironpe/textile_editor_helper/wiki/Examples" target="_blank">Basic Examples</a>
 
-Recently created a Rails 3.2.8 app that uses simple_form and textile_editor_helper, <a href="https://github.com/bridgeutopia/textile-editor-helper-examples" target="_blank">check it out</a>.
+Recently created a Rails 3.2.8 app that uses simple_form and textile_editor_helper, <a href="https://github.com/katgironpe/textile-editor-helper-examples" target="_blank">check it out</a>.
 
 ## Testing
 
-	git clone git://github.com/bridgeutopia/textile_editor_helper.git
+	git clone git://github.com/katgironpe/textile_editor_helper.git
 	cd textile_editor_helper
 	bundle install
 	bundle exec rake
@@ -107,7 +107,7 @@ Textile Editor Helper is released under the MIT license.
 
 Textile Editor Helper was created by Dave Olsen (Javascript) and Chris Scharf (Ruby/Rails) of <a href="http://webservices.wvu.edu/" target="_blank">West Virginia University Web Services</a>
 
-The project is now maintained by <a href="http://blog.bridgeutopiaweb.com" target="_blank">Katherine G. Pe</a>
+The project is now maintained by <a href="http://c.kat.pe" target="_blank">Katherine G. Pe</a>
 
 
 ## Inspired by
