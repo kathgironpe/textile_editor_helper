@@ -10,7 +10,7 @@ Example App
 *********************
 
 rails new something -d mysql
-rake db:create RAILS_ENV=development
+rake db:create RAILS_ENV
 rails g scaffold Post body:text
 rake db:migrate
 
@@ -22,7 +22,7 @@ Example layout
 <html>
 <head>
   <title>Peace</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
   <%= csrf_meta_tags %>
   <%= yield :head %>
@@ -30,7 +30,7 @@ Example layout
 <body>
 
 <%= yield %>
-<%= javascript_include_tag "application" %>
+<%= javascript_include_tag 'application' %>
 <%= yield :javascript %>
 </body>
 </html>
@@ -81,7 +81,7 @@ Example: If you use simple_form
 ********************************
 
 <%= simple_form_for @post do |f| %>
-  <%= f.input :body, :as=>:textile_editor %>
+  <%= f.input :body, as: :textile_editor %>
   <%= f.button :submit %>
 
   <% content_for :javascript do %>
