@@ -1,6 +1,6 @@
 ## Textile Editor Helper
 
-[![Gem Version](https://badge.fury.io/katgironpe/textile_editor_helper.svg)](http://badge.fury.io/katgironpe/textile_editor_helper)
+[![Gem Version](https://badge.fury.io/rb/textile_editor_helper.svg)](http://badge.fury.io/rb/textile_editor_helper)
 [![Build Status](https://secure.travis-ci.org/katgironpe/textile_editor_helper.png)](http://travis-ci.org/katgironpe/textile_editor_helper)
 [![Code Climate](https://codeclimate.com/github/katgironpe/textile_editor_helper.png)](https://codeclimate.com/github/katgironpe/textile_editor_helper)
 [![Dependency Status](https://gemnasium.com/katgironpe/textile_editor_helper.svg)](https://gemnasium.com/katgironpe/textile_editor_helper)
