@@ -12,3 +12,12 @@
 * Fixed some generator bugs.
 * Refactored tests and helpers to make sure there is no duplicated coda
 * Load and require simple_form and formtastic helpers and dependencies only when the gems are found.
+
+## Version 0.1.2
+
+* Rails 3.2 is no longer supported. But people can use the older version of the gem.
+* Rails 4.1.4 or greater is supported.
+* Updated Cucumber tests.
+* Consistently use Asset pipeline as images previously used the public dir.
+* There are no known issues after dependency upgrades. The gem works for simple_form and formtastic.
+* Ruby 1.8 is no longer supported.

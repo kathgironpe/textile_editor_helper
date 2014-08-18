@@ -4,7 +4,7 @@ require 'rake/testtask'
 require 'cucumber/rake/task'
 
 task(:default).clear
-task :default => [:cucumber, :test]
+task default: [:cucumber, :test]
 
 Rake::TestTask.new do |t|
   t.pattern = "test/**/*_test.rb"

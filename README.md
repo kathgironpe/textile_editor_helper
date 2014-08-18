@@ -4,6 +4,7 @@
 [![Build Status](https://secure.travis-ci.org/katgironpe/textile_editor_helper.png)](http://travis-ci.org/katgironpe/textile_editor_helper)
 [![Code Climate](https://codeclimate.com/github/katgironpe/textile_editor_helper.png)](https://codeclimate.com/github/katgironpe/textile_editor_helper)
 [![Dependency Status](https://gemnasium.com/katgironpe/textile_editor_helper.svg)](https://gemnasium.com/katgironpe/textile_editor_helper)
+[![Coverage Status](https://coveralls.io/repos/katgironpe/textile_editor_helper/badge.png)](https://coveralls.io/r/katgironpe/textile_editor_helper)
 
 Textile Editor Helper is a plugin for Ruby on Rails to add a Textile toolbar above textareas.
 
@@ -16,9 +17,10 @@ To use Textile Editor Helper you must use the jQuery JavaScript library.
 
 Follow best practices like adding JS files at the bottom of the page (before closing body tag).
 
-Rails versions older than 4.1.4 are not supported.
+Rails versions older than 4.1.4 are probably not supported by the current version. 
+Ruby 1.8 is not supported.
 
-If this broke something, please use:
+If this broke something or you need to use it for an older version, please use:
 
 ```ruby
 gem 'textile_editor_helper', '0.0.31'
@@ -27,7 +29,7 @@ gem 'textile_editor_helper', '0.0.31'
 Otherwise, this should work:
 
 ```ruby
-gem 'textile_editor_helper', '0.1.1'
+gem 'textile_editor_helper', '0.1.2'
 ```
 
 ## Rails Quickstart
@@ -78,6 +80,7 @@ To use the Textile Editor Helper with a specific text area, you can choose betwe
 
 
 **Just like writing a text area tag!**
+
 
 At the end of your form put in the following code:
 
@@ -136,9 +139,10 @@ The project is now maintained by <a href="http://c.kat.pe" target="_blank">Kathe
 
 ## Notes from maintainer
 
-I am no longer using Textile as much as Markdown.
+Due to some practical reasons, I am no longer using Textile as much as Markdown.
 I found this helpful before but no longer really use it.
 I still find time to maintain for those who do.
+
 
 ## Inspired by
 

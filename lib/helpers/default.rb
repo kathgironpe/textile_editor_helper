@@ -133,7 +133,7 @@ module ActionView::Helpers
     #   textile_editor_tag 'comment', nil, :class => 'comment_input'
     #   # => <textarea class="comment_input" id="comment" name="comment"></textarea>
     def textile_editor_tag(name, content = nil, options = {})
-      text_area_tag(name, content, options.merge(:class=>"textile_editor"))
+      text_area_tag(name, content, options.merge(class: 'textile_editor'))
     end
   end
 end

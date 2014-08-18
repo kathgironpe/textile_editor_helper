@@ -4,10 +4,10 @@ module Formtastic
   module Helpers
     module FormHelper
       def textile_editor_initialize
-        unless request.xhr?
-          TextileEditorInitialize.textile_editor_initialize
-        else
+        if request.xhr?
           [].join("\n").html_safe
+        else
+          TextileEditorInitialize.textile_editor_initialize
         end
       end
     end
@@ -18,12 +18,11 @@ module Formtastic
     class TextileEditorInput
       include Base
       include Base::Placeholder
-
       def input_html_options
         {
-          :cols => builder.default_text_area_width,
-          :rows => builder.default_text_area_height,
-          :class => "textile_editor"
+          cols: builder.default_text_area_width,
+          rows: builder.default_text_area_height,
+          class: 'textile_editor'
         }.merge(super)
       end
 
@@ -33,7 +32,6 @@ module Formtastic
           builder.text_area(method, input_html_options)
         end
       end
-
     end
   end
 end

@@ -1,5 +1,4 @@
 module SupportMethods
-
   def setup
     @controller = Class.new do
       attr_reader :url_for_options
@@ -25,7 +24,6 @@ module SupportMethods
 
   def config
     Class.new do
-
       class << self
         def perform_caching
           true
@@ -50,5 +48,4 @@ module SupportMethods
 
     end
   end
-
 end

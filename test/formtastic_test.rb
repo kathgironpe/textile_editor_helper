@@ -3,8 +3,7 @@ require_relative '../lib/helpers/formtastic'
 require_relative '../lib/helpers/textile_editor_initialize'
 require_relative 'abstract_unit'
 
-class FormtasticTest  < MiniTest::Unit::TestCase
-
+class FormtasticTest < Minitest::Test
   include SimpleForm::ActionViewExtensions::FormHelper
   include SimpleForm::Inputs
   include SupportMethods
@@ -17,5 +16,4 @@ class FormtasticTest  < MiniTest::Unit::TestCase
     actual = textile_editor_initialize()
     assert_equal expected_initialize_output, actual
   end
-
 end
