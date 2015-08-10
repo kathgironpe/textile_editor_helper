@@ -19,7 +19,7 @@ module SimpleForm
     class TextileEditorInput < Base
 
       def input(wrapper_options)
-        @builder.text_area(attribute_name, input_html_options)
+        @builder.text_area(attribute_name, merge_wrapper_options(input_html_options, wrapper_options))
       end
 
     end
