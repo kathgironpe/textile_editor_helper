@@ -34,8 +34,7 @@ module ActionView::Helpers
     #   #    </textarea>
     def textile_editor(object_name, method, options = {})
       output = []
-      name = "#{object_name}[#{method}]"
-      output << text_area_tag(name, nil, options.merge(class: "textile_editor"))
+      output << text_area(object_name, method, options.merge(class: "textile_editor"))
       output.join("\n").html_safe
     end
 
