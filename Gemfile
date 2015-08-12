@@ -5,7 +5,7 @@ gem "rake"
 gemspec
 
 group :development do
-  gem 'rails', '>= 4.1.4'
+  gem 'rails', '>= 4.1.0'
   gem 'formtastic'
   gem 'simple_form'
 end

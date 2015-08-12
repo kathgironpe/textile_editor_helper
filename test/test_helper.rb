@@ -1,5 +1,7 @@
 ENV['RACK_ENV'] = 'test'
+ENV['RAILS_ENV'] = ENV['RACK_ENV']
 
+require 'rails'
 require 'minitest/pride'
 require 'minitest/autorun'
 require 'coveralls'
