@@ -15,7 +15,7 @@ class TextileEditorHelperTest < Minitest::Test
 
   def create_editor(object, field, options={})
     output = textile_editor(object, field, options)
-    assert_equal  text_area(object, field, options.merge(class: "textile_editor")), output
+    assert_equal text_area(object, field, options.merge(class: "textile_editor")), output
   end
 
   def expected_initialize_output
